@@ -192,9 +192,9 @@ void FPGA::largeMV(const float* large_mat, const float* input, float* output, in
       }
      
       // 2) Assign a matrix
-      for(int k=0;a<m_size_;a++){
-        for(int l=0;b<v_size_;b++){
-          mat[a*v_size_+b]=0; 
+      for(int k=0;k<m_size_;k++){
+        for(int l=0;l<v_size_;l++){
+          mat[k*v_size_+l]=0; 
         }
       }
       for(int k=0;k<block_row;k++){
