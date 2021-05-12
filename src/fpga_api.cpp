@@ -123,6 +123,11 @@ void FPGA::largeMV(const float* large_mat, const float* input, float* output, in
       }
      
       // 2) Assign a matrix
+      for(int k=0;k<m_size_;k++){
+        for(int l=0;l<v_size_;l++){
+          mat[k*v_size_+l]=0; 
+        }
+      }
       for(int k=0;k<block_row;k++){
         for(int l=0;l<block_col;l++){
           mat[k*v_size_+l]=large_mat[(i+k)*num_input+j+l];
@@ -160,6 +165,11 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
         int block_col_2=min(v_size_,num_matrix2-k);
 
         // 1) Assign a m1
+        for(int a=0;a<v_size_;a++){
+          for(int b=0;b<v_size_;b++){
+            m1[a*v_size_+b]=0; 
+          }
+        }
         for(int a=0;a<block_row;a++){
           for(int b=0;b<block_col_1;b++){
             m1[a*v_size_+b]=weight_mat[(i+a)*num_input+j+b]; 
@@ -167,6 +177,11 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
         }
 
         // 2) Assign a m2
+        for(int a=0;a<v_size_;a++){
+          for(int b=0;b<v_size_;b++){
+            m2[a*v_size_+b]=0; 
+          }
+        }
         for(int a=0;a<block_col_1;a++){
           for(int b=0;b<block_col_2;b++){
             m2[a*v_size_+b]=input_mat[(j+a)*num_matrix2+k+b]; 
