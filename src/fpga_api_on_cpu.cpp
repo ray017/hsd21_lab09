@@ -146,7 +146,7 @@ void FPGA::largeMM(const float* weight_mat, const float* input_mat, float* outpu
         // 2) Assign a m2
         for(int a=0;a<v_size_;a++){
           for(int b=0;b<v_size_;b++){
-            m1[a*v_size_+b]=0; 
+            m2[a*v_size_+b]=0; 
           }
         }
         for(int a=0;a<block_col_1;a++){
